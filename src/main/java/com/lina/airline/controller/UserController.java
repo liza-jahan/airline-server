@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
-    public final UserService userService;
+   //public final UserService userService;
 
     @GetMapping
     public String getMessage(){
