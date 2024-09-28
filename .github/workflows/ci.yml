@@ -1,0 +1,91 @@
+# File: .github/workflows/ci.yml
+name: Java CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/*'
+  pull_request:
+    branches:
+      - main
+      - 'release/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java-version: ['21']
+        os: [ubuntu-latest]
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Java 21 environment
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # Use Eclipse Temurin distribution (recommended)
+          java-version: ${{ matrix.java-version }}
+
+      # Step 3: Cache Maven dependencies
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # Step 4: Build and run tests
+      - name: Build and test with Maven
+        run: mvn clean install --batch-mode --no-transfer-progress
+
+      # Step 5: Check for security vulnerabilities using OWASP Dependency Check
+      - name: OWASP Dependency Check
+        run: mvn org.owasp:dependency-check-maven:check
+
+      # Step 6: Run code quality checks with Checkstyle (optional, if you use Checkstyle)
+      - name: Run Checkstyle
+        run: mvn checkstyle:check
+
+      # Step 7: Upload test results (JUnit XML)
+      - name: Archive Test Reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: target/surefire-reports/*.xml
+
+      # Step 8: Upload coverage report (e.g., Jacoco if used)
+      - name: Upload Code Coverage Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage
+          path: target/site/jacoco/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Java 21 environment
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      # Deploy the application (customize according to your deployment setup, e.g., Docker, Kubernetes, AWS, etc.)
+      - name: Deploy to Production
+        run: |
+          echo "Deploying to production..." 
+          # Add custom deployment commands here
