@@ -17,7 +17,7 @@ public class UserController {
    public final UserService userService;
 
     @PostMapping("/")
-    public UUID getMessage(@RequestBody @Valid UserRegistrationRequest userRegistrationRequest){
+    public UUID registrationUser(@RequestBody @Valid UserRegistrationRequest userRegistrationRequest){
         return userService.saveUser(userRegistrationRequest);
     }
 }
