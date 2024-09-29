@@ -6,10 +6,13 @@ import com.lina.airline.exception.IdentifierExistException;
 import com.lina.airline.repository.UserRepository;
 import com.lina.airline.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 import static com.lina.airline.utils.ErrorDetails.USER_ALREADY_EXISTS;
+
+@Service
 
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
