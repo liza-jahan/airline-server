@@ -19,16 +19,10 @@ public class UserEntity extends BaseEntity {
     private String name;
     private String email;
     private String password;
+    private String phoneNumber;
+    private String passportNumber;
+    private  String emergencyPhoneNumber;
 
-    private boolean accountNonExpired;
-
-    private boolean accountNonLocked;
-
-    private boolean credentialsNonExpired;
-
-    private boolean enabled;
-
-    private boolean verified;
 
 
 }

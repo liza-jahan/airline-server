@@ -23,4 +23,13 @@ public class UserRegistrationRequest {
     @NotBlank(message = "Password is required")
     @Pattern(regexp = PASSWORD_VALIDATION, message = "Password should contains Latter special character")
     private String password;
+    @NotBlank(message = "Phone number is required")
+    @Pattern(regexp = PHONE_VALIDATION)
+    private  String phoneNumber;
+    @NotBlank(message = "Passport number is required")
+    @Pattern(regexp = PASSPORT_VALIDATION)
+    private  String passportNumber;
+    @NotBlank(message = "Phone number is required")
+    @Pattern(regexp = PHONE_VALIDATION)  //see this .....not same phone number
+    private  String emergencyPhoneNumber;
 }

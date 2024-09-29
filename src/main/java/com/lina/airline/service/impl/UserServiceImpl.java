@@ -27,6 +27,10 @@ public class UserServiceImpl implements UserService {
         userEntity.setEmail(userRegistrationRequest.getEmail());
         userEntity.setPassword(userRegistrationRequest.getPassword());
         userEntity.setName(userRegistrationRequest.getName());
+        userEntity.setPhoneNumber(userRegistrationRequest.getPhoneNumber());
+        userEntity.setPassportNumber(userRegistrationRequest.getPassportNumber());
+        userEntity.setEmergencyPhoneNumber(userRegistrationRequest.getEmergencyPhoneNumber());
+
         userRepository.save(userEntity);
         return userEntity.getId();
     }
