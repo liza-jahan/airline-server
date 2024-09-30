@@ -59,7 +59,6 @@ public class UserServiceImpl implements UserService {
         userEntity.setPresentAddress(userRegistrationRequest.getPresentAddress());
 
         userRepository.save(userEntity);
-
         return Optional.of(userEntity);
     }
 
