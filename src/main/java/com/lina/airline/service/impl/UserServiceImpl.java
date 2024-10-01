@@ -1,9 +1,10 @@
 package com.lina.airline.service.impl;
 
-import com.lina.airline.dto.request.UpdateUserRegistrationRequest;
+import com.lina.airline.dto.request.UpdateUserRequest;
 import com.lina.airline.dto.request.UserRegistrationRequest;
 import com.lina.airline.entity.UserEntity;
 import com.lina.airline.exception.IdentifierExistException;
+import com.lina.airline.exception.NotFoundException;
 import com.lina.airline.repository.UserRepository;
 import com.lina.airline.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -38,13 +39,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserEntity> updateUser(UUID id, UpdateUserRegistrationRequest userRegistrationRequest) {
-        UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Id  not found"));
+    public Optional<UserEntity> updateUserProfile(UUID id, UpdateUserRequest userRegistrationRequest) {
 
-
-
+        UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new NotFoundException("Id is not found", "02-U02-002"));
         userEntity.setName(userRegistrationRequest.getName());
-        userEntity.setEmail(userRegistrationRequest.getEmail());
         userEntity.setPhoneNumber(userRegistrationRequest.getPhoneNumber());
         userEntity.setPassportNumber(userRegistrationRequest.getPassportNumber());
         userEntity.setEmergencyPhoneNumber(userRegistrationRequest.getEmergencyPhoneNumber());
