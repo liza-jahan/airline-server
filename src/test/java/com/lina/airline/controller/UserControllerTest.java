@@ -47,7 +47,7 @@ class UserControllerTest {
         when(userService.saveUser(any(UserRegistrationRequest.class))).thenReturn(userId);
 
         // Act
-        UUID result = userController.getMessage(userRegistrationRequest);
+        UUID result = userController.registrationUser(userRegistrationRequest);
 
         // Assert
         assertEquals(userId, result, "The returned userId should match the mocked result.");
@@ -61,7 +61,7 @@ class UserControllerTest {
 
         // Act & Assert
         IdentifierExistException exception = assertThrows(IdentifierExistException.class, () -> {
-            userController.getMessage(userRegistrationRequest);
+            userController.registrationUser(userRegistrationRequest);
         });
 
         assertEquals(USER_ALREADY_EXISTS.getMessage(), exception.getMessage(), "Exception message should match.");
