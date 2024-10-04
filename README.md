@@ -162,7 +162,7 @@ For any inquiries or support, please contact:
 - **GitHub**: [Your GitHub Profile](https://github.com/your-username)
 
 
-##SQL  Injection
+## SQL Injection
 
 - SQL Injection is a web page vulnerability that lets an attacker make queries with the database.
 - Attackers take advantage of web application vulnerability and inject an SQL command via the input from users to the application.
