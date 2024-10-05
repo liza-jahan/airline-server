@@ -168,6 +168,33 @@ For any inquiries or support, please contact:
 - Attackers take advantage of web application vulnerability and inject an SQL command via the input from users to the application.
 - Attackers can SQL queries like SELECT to retrieve confidential information that otherwise wouldn’t be visible.
 
+## What is the impact of a successful SQL injection attack?
+- A successful SQL injection attack can have severe consequences, including unauthorized access to sensitive data, such as personal information and financial records.
+- Attackers may manipulate or delete critical data, compromising its integrity and causing operational disruptions.
+- They can also bypass authentication mechanisms, gaining unauthorized access to user accounts, including administrative privileges.
+
+##How Does a SQL Injection Attack Work?
+
+A SQL Injection attack involves inserting or “injecting” a SQL query via the input data from the client to the application. A successful attack allows an attacker to manipulate the SQL queries that an application makes to its database. It typically involves the following steps:
+
+* **Identification of vulnerable inputs**: Attackers first identify inputs within the web application that are vulnerable to SQL injection. These inputs could be text fields in a form, URL parameters, or any other input mechanisms.
+* **Crafting the malicious SQL query**: Once a vulnerable input is identified, attackers craft a SQL statement intended to be inserted into the query executed by the application. This statement is designed to modify the original SQL query to perform actions unintended by the application developers.
+* **Bypassing application security measures**: Attackers often have to bypass security measures like input validation or escaping special characters. They achieve this through techniques like string concatenation or utilizing SQL syntax to comment out parts of the original query.
+* **Executing the malicious query**: When the application executes the SQL query, it includes the attacker’s malicious input. This modified query can perform actions such as unauthorized viewing of data, deletion of data, or even database schema alterations.
+* **Extracting or manipulating data**: Depending on the attack, the outcome might be the extraction of sensitive information (like user credentials), altering existing data, adding new data, or even deleting significant portions of the database.
+* **Exploiting database server vulnerabilities**: Advanced SQL injections may exploit vulnerabilities in the database server, extending the attack beyond the database to the server level. This can include executing commands on the operating system or accessing other parts of the server’s file system.
+  
+##  SQL Injection Types
+There are different types of SQL injection attacks:
+
+1. In-band SQL Injection
+2. Error-based SQL Injection
+3. Blind SQL Injection
+4. Out-of-band SQL Injection
+5. Inference-based SQL Injection
+
+  
+
 ## REST API Naming Conventions
 
 **Use Nouns to represent resources / Not Verbs**
