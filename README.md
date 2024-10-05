@@ -332,10 +332,10 @@ Use a consistent format for API responses to make it easy for developers to cons
 
 ❌Wrong:
 
-Returning responses in different formats (JSON, XML, HTML, etc.) depending on the endpoint
+* Returning responses in different formats (JSON, XML, HTML, etc.) depending on the endpoint
 
 ✔️Correct:
-
+* Returning responses in a consistent format, such as JSON or XML
 
 ***Document Your API***
 
