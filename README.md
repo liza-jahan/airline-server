@@ -192,4 +192,9 @@ http://api.example.com/v1/store/orders/{order-id}✅
 ```
 
 **Use Pluralized Nouns for resources**
+
 Use plural when possible unless they are singleton resources.
+
+**Use hyphens (-) to improve the readability of URIs**
+
+Do not use underscores. Separating words with hyphens will be easy for you and others to interpret. It is more user-friendly when it comes to long-path segmented URIs.
