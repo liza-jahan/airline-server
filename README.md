@@ -173,7 +173,7 @@ For any inquiries or support, please contact:
 - Attackers may manipulate or delete critical data, compromising its integrity and causing operational disruptions.
 - They can also bypass authentication mechanisms, gaining unauthorized access to user accounts, including administrative privileges.
 
-##How Does a SQL Injection Attack Work?
+## How Does a SQL Injection Attack Work?
 
 A SQL Injection attack involves inserting or “injecting” a SQL query via the input data from the client to the application. A successful attack allows an attacker to manipulate the SQL queries that an application makes to its database. It typically involves the following steps:
 
