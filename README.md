@@ -204,11 +204,13 @@ The core concept of RESTful APIs is to manipulate resources through HTTP methods
 ❌Wrong:
 
 /createUser
+
 /deleteUser
 
 ✔️Correct :
 
 /users (GET — list all users, POST — create a new user)
+
 /users/{userId} (GET — get user details, PUT — update user details, DELETE — delete user)
 
 ***Use HTTP Methods for Actions***
@@ -218,12 +220,15 @@ HTTP methods are used to perform actions on resources. Use HTTP methods to indic
 ❌Wrong:
 
 /getUsers
+
 /fetchUsers
+
 /retrieveUsers
 
 ✔️Correct:
 
 /users (GET — list all users)
+
 /users/{userId} (GET — get user details)
 
 ***Use Plural Nouns for Collections***
@@ -233,11 +238,13 @@ For resources that represent collections, use plural nouns in the URL. For examp
 ❌Wrong:
 
 /book
+
 /user
 
 ✔️Correct:
 
 /books
+
 /users
 
 ***Use Parameters for Filtering, Sorting, and Pagination***
@@ -247,11 +254,13 @@ Use query parameters to allow users to filter, sort, and paginate through collec
 ❌Wrong:
 
 /users?page=2&perPage=10
+
 /getUsers/2/10
 
 ✔️Correct:
 
 /users?_page=2&_limit=10
+
 /users?page=2&perPage=10 (for backward compatibility)
 
 ***Use Descriptive Names for Query Parameters***
@@ -261,11 +270,13 @@ When using query parameters, use descriptive names to make it clear what the par
 ❌Wrong:
 
 /users?q=John
+
 /books?search=history
 
 ✔️Correct:
 
 /users?name=John
+
 /books?category=history
 
 ***Use Consistent Naming Conventions***
@@ -275,11 +286,13 @@ Maintain consistency throughout your API by using the same naming conventions fo
 ❌Wrong:
 
 /users (for listing all users)
+
 /getAllUsers
 
 ✔️Correct:
 
 /users (for listing all users)
+
 /users/{userId} (for retrieving a specific user)
 
 ***Use CamelCase or Snake Case for Multi-word Names***
@@ -289,12 +302,15 @@ When naming resources, use either CamelCase or snake case for multi-word names. 
 ❌Wrong:
 
 /blogPosts
+
 /blog_posts
+
 /BlogPosts
 
 ✔️Correct:
 
 /blog-posts
+
 ***Use HTTP Status Codes for Error Handling***
 
 Use HTTP status codes to indicate the success or failure of API requests. For example, a 404 status code should be returned when a requested resource is not found.
