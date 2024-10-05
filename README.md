@@ -197,6 +197,44 @@ There are different types of SQL injection attacks:
 
 ## REST API Naming Conventions
 
+When we're building a RESTful web service, you often need to provide these basic operations to interact with the underlying data source (like a database). Using these operations, clients can add, retrieve, modify, or delete data.
+
+## HTTP Methods and CRUD
+**CREATE: POST**
+To add new data to the server, the HTTP POST method is used.
+```bash 
+POST /items/
+```
+**READ: GET**
+To retrieve data, the HTTP GET method is used.
+
+Retrieve all items:
+```bash 
+GET /items/
+```
+Retrieve a specific item:
+```bash 
+GET /items/1/
+```
+**UPDATE: PUT & PATCH**
+There are two primary HTTP methods for updating data: PUT and PATCH. The difference lies in how they handle the update.
+
+* PUT: Updates the entire resource. If you omit some fields, it may set them to null or default values.
+
+```bash 
+PUT /items/1/
+```
+* PATCH: Partially updates a resource. You can provide only the fields you want to change.
+
+```bash 
+PATCH /items/1/
+```
+**DELETE**
+To remove a resource, the HTTP DELETE method is used.
+```bash 
+DELETE /items/1/
+```
+
 ***Use Nouns for Resources***
 
 The core concept of RESTful APIs is to manipulate resources through HTTP methods. To keep your APIs simple and easy to understand, use nouns for resources in your URLs. For example, if you have an API for managing users, the resource could be named “/users”. Using a verb in the resource name can be confusing and less intuitive.
