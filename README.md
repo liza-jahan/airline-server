@@ -197,7 +197,7 @@ There are different types of SQL injection attacks:
 
 ## REST API Naming Conventions
 
-**Use Nouns for Resources**
+***Use Nouns for Resources***
 
 The core concept of RESTful APIs is to manipulate resources through HTTP methods. To keep your APIs simple and easy to understand, use nouns for resources in your URLs. For example, if you have an API for managing users, the resource could be named “/users”. Using a verb in the resource name can be confusing and less intuitive.
 
@@ -205,12 +205,13 @@ The core concept of RESTful APIs is to manipulate resources through HTTP methods
 
 /createUser
 /deleteUser
+
 ✔️Correct :
 
 /users (GET — list all users, POST — create a new user)
 /users/{userId} (GET — get user details, PUT — update user details, DELETE — delete user)
 
-**Use HTTP Methods for Actions**
+***Use HTTP Methods for Actions***
 
 HTTP methods are used to perform actions on resources. Use HTTP methods to indicate the type of action that is being performed on the resource. For example, to retrieve user data, use the HTTP GET method on the “/users” resource.
 
@@ -219,12 +220,13 @@ HTTP methods are used to perform actions on resources. Use HTTP methods to indic
 /getUsers
 /fetchUsers
 /retrieveUsers
+
 ✔️Correct:
 
 /users (GET — list all users)
 /users/{userId} (GET — get user details)
 
-**Use Plural Nouns for Collections**
+***Use Plural Nouns for Collections***
 
 For resources that represent collections, use plural nouns in the URL. For example, if you have an API that manages books, use “/books” to represent a collection of books.
 
@@ -232,12 +234,13 @@ For resources that represent collections, use plural nouns in the URL. For examp
 
 /book
 /user
+
 ✔️Correct:
 
 /books
 /users
 
-**Use Parameters for Filtering, Sorting, and Pagination**
+***Use Parameters for Filtering, Sorting, and Pagination***
 
 Use query parameters to allow users to filter, sort, and paginate through collections of resources. For example, you could use the query parameter “?page=2” to get the second page of results.
 
@@ -245,12 +248,13 @@ Use query parameters to allow users to filter, sort, and paginate through collec
 
 /users?page=2&perPage=10
 /getUsers/2/10
+
 ✔️Correct:
 
 /users?_page=2&_limit=10
 /users?page=2&perPage=10 (for backward compatibility)
 
-**Use Descriptive Names for Query Parameters**
+***Use Descriptive Names for Query Parameters***
 
 When using query parameters, use descriptive names to make it clear what the parameter does. For example, instead of using “?q=keyword”, use “?search=keyword” to indicate that the parameter is used for searching.
 
@@ -258,12 +262,13 @@ When using query parameters, use descriptive names to make it clear what the par
 
 /users?q=John
 /books?search=history
+
 ✔️Correct:
 
 /users?name=John
 /books?category=history
 
-**Use Consistent Naming Conventions**
+***Use Consistent Naming Conventions***
 
 Maintain consistency throughout your API by using the same naming conventions for resources, actions, and parameters. This makes your API easier to understand and use.
 
@@ -271,12 +276,13 @@ Maintain consistency throughout your API by using the same naming conventions fo
 
 /users (for listing all users)
 /getAllUsers
+
 ✔️Correct:
 
 /users (for listing all users)
 /users/{userId} (for retrieving a specific user)
 
-**Use CamelCase or Snake Case for Multi-word Names**
+***Use CamelCase or Snake Case for Multi-word Names***
 
 When naming resources, use either CamelCase or snake case for multi-word names. For example, if you have an API that manages blog posts, use “/blogPosts” or “/blog_posts” to represent the resource.
 
@@ -285,16 +291,18 @@ When naming resources, use either CamelCase or snake case for multi-word names. 
 /blogPosts
 /blog_posts
 /BlogPosts
+
 ✔️Correct:
 
 /blog-posts
-**Use HTTP Status Codes for Error Handling**
+***Use HTTP Status Codes for Error Handling***
 
 Use HTTP status codes to indicate the success or failure of API requests. For example, a 404 status code should be returned when a requested resource is not found.
 
 ❌Wrong:
 
 Returning 200 (OK) for errors
+
 ✔️Correct:
 
 Returning 404 (Not Found) for a non-existent resource
@@ -302,24 +310,26 @@ Returning 400 (Bad Request) for invalid request parameters
 Returning 401 (Unauthorized) for an unauthorized request
 Returning 500 (Internal Server Error) for server-side errors
 
-**Use Consistent Response Formats**
+***Use Consistent Response Formats***
 
 Use a consistent format for API responses to make it easy for developers to consume your API. Use JSON or XML for response formats, and ensure that your responses include all necessary information.
 
 ❌Wrong:
 
 Returning responses in different formats (JSON, XML, HTML, etc.) depending on the endpoint
+
 ✔️Correct:
 
 
-**Document Your API**
+***Document Your API***
 
 Provide clear and concise documentation for your API, including information on the available resources, actions, and parameters. This will make it easier for developers to use and integrate with your API.
 
 ❌Wrong:
 
-No API documentation :)
+No API documentation :
+
 ✔️Correct:
 
 Providing clear and concise documentation for all API endpoints, including the available resources, actions, and parameters.
-In conclusion, following REST API naming conventions a
+
