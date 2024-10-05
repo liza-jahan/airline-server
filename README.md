@@ -203,15 +203,15 @@ The core concept of RESTful APIs is to manipulate resources through HTTP methods
 
 ❌Wrong:
 
-/createUser
+* /createUser
 
-/deleteUser
+* /deleteUser
 
 ✔️Correct :
 
-/users (GET — list all users, POST — create a new user)
+* /users (GET — list all users, POST — create a new user)
 
-/users/{userId} (GET — get user details, PUT — update user details, DELETE — delete user)
+* /users/{userId} (GET — get user details, PUT — update user details, DELETE — delete user)
 
 ***Use HTTP Methods for Actions***
 
@@ -219,17 +219,17 @@ HTTP methods are used to perform actions on resources. Use HTTP methods to indic
 
 ❌Wrong:
 
-/getUsers
+* /getUsers
 
-/fetchUsers
+* /fetchUsers
 
-/retrieveUsers
+* /retrieveUsers
 
 ✔️Correct:
 
-/users (GET — list all users)
+* /users (GET — list all users)
 
-/users/{userId} (GET — get user details)
+* /users/{userId} (GET — get user details)
 
 ***Use Plural Nouns for Collections***
 
@@ -237,15 +237,15 @@ For resources that represent collections, use plural nouns in the URL. For examp
 
 ❌Wrong:
 
-/book
+* /book
 
-/user
+* /user
 
 ✔️Correct:
 
-/books
+* /books
 
-/users
+* /users
 
 ***Use Parameters for Filtering, Sorting, and Pagination***
 
@@ -253,15 +253,15 @@ Use query parameters to allow users to filter, sort, and paginate through collec
 
 ❌Wrong:
 
-/users?page=2&perPage=10
+* /users?page=2&perPage=10
 
-/getUsers/2/10
+* /getUsers/2/10
 
 ✔️Correct:
 
-/users?_page=2&_limit=10
+* /users?_page=2&_limit=10
 
-/users?page=2&perPage=10 (for backward compatibility)
+* /users?page=2&perPage=10 (for backward compatibility)
 
 ***Use Descriptive Names for Query Parameters***
 
@@ -269,15 +269,15 @@ When using query parameters, use descriptive names to make it clear what the par
 
 ❌Wrong:
 
-/users?q=John
+* /users?q=John
 
-/books?search=history
+* /books?search=history
 
 ✔️Correct:
 
-/users?name=John
+* /users?name=John
 
-/books?category=history
+* /books?category=history
 
 ***Use Consistent Naming Conventions***
 
@@ -285,15 +285,15 @@ Maintain consistency throughout your API by using the same naming conventions fo
 
 ❌Wrong:
 
-/users (for listing all users)
+* /users (for listing all users)
 
-/getAllUsers
+* /getAllUsers
 
 ✔️Correct:
 
-/users (for listing all users)
+* /users (for listing all users)
 
-/users/{userId} (for retrieving a specific user)
+* /users/{userId} (for retrieving a specific user)
 
 ***Use CamelCase or Snake Case for Multi-word Names***
 
@@ -301,15 +301,15 @@ When naming resources, use either CamelCase or snake case for multi-word names. 
 
 ❌Wrong:
 
-/blogPosts
+* /blogPosts
 
-/blog_posts
+* /blog_posts
 
-/BlogPosts
+* /BlogPosts
 
 ✔️Correct:
 
-/blog-posts
+* /blog-posts
 
 ***Use HTTP Status Codes for Error Handling***
 
@@ -317,14 +317,14 @@ Use HTTP status codes to indicate the success or failure of API requests. For ex
 
 ❌Wrong:
 
-Returning 200 (OK) for errors
+* Returning 200 (OK) for errors
 
 ✔️Correct:
 
-Returning 404 (Not Found) for a non-existent resource
-Returning 400 (Bad Request) for invalid request parameters
-Returning 401 (Unauthorized) for an unauthorized request
-Returning 500 (Internal Server Error) for server-side errors
+* Returning 404 (Not Found) for a non-existent resource
+* Returning 400 (Bad Request) for invalid request parameters
+* Returning 401 (Unauthorized) for an unauthorized request
+* Returning 500 (Internal Server Error) for server-side errors
 
 ***Use Consistent Response Formats***
 
@@ -343,9 +343,9 @@ Provide clear and concise documentation for your API, including information on t
 
 ❌Wrong:
 
-No API documentation :
+* No API documentation :)
 
 ✔️Correct:
 
-Providing clear and concise documentation for all API endpoints, including the available resources, actions, and parameters.
+* Providing clear and concise documentation for all API endpoints, including the available resources, actions, and parameters.
 
