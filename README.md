@@ -167,3 +167,29 @@ For any inquiries or support, please contact:
 - SQL Injection is a web page vulnerability that lets an attacker make queries with the database.
 - Attackers take advantage of web application vulnerability and inject an SQL command via the input from users to the application.
 - Attackers can SQL queries like SELECT to retrieve confidential information that otherwise wouldn’t be visible.
+
+## REST API Naming Conventions
+
+**Use Nouns to represent resources / Not Verbs**
+
+Always make sure that your URIs are named with nouns to specify the resource instead of using verbs. The URIs shouldn’t indicate any CRUD (Create, Read, Update, Delete) operations. Additionally avoid verb-noun combinations: hyphenated, snake_case, camelCase.
+
+Bad examples:
+
+```
+http://api.example.com/v1/store/CreateItems/{item-id}❌
+http://api.example.com/v1/store/getEmployees/{emp-id}❌
+http://api.example.com/v1/store/update-prices/{price-id}❌
+http://api.example.com/v1/store/deleteOrders/{order-id}❌
+```
+
+Good examples:
+```
+http://api.example.com/v1/store/items/{item-id}✅
+http://api.example.com/v1/store/employees/{emp-id}✅
+http://api.example.com/v1/store/prices/{price-id}✅
+http://api.example.com/v1/store/orders/{order-id}✅
+```
+
+**Use Pluralized Nouns for resources**
+Use plural when possible unless they are singleton resources.
