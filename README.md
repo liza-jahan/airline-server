@@ -194,6 +194,13 @@ There are different types of SQL injection attacks:
 5. Inference-based SQL Injection
 
   
+The five key methods to prevent SQL injection attacks include:
+
+1. Filter database inputs: Detect and filter out malicious code from user inputs.
+2. Restrict database code: Prevent unintended database queries and exploration by limiting database procedures and code.
+3. Restrict database access: Prevent unauthorized data access, exfiltration, or deletion through access control restrictions.
+4. Maintain applications and databases: Keep databases fully patched and updated. Upgrade when possible.
+5. Monitor application and database inputs and communications: Monitor communication to detect and block malicious SQLi attempts.
 
 ## REST API Naming Conventions
 
