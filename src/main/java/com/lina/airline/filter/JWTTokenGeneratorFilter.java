@@ -1,5 +1,6 @@
 package com.lina.airline.filter;
 
+import com.lina.airline.utils.ApplicationConstantsUtils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;
@@ -17,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
-    @Value("${application.jwt.secret}")
+    @Value(ApplicationConstantsUtils.JWT_SECRET_KEY)
     private String jwtSecret;
 
     @Override
