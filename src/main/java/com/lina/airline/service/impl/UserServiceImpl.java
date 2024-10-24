@@ -8,6 +8,7 @@ import com.lina.airline.exception.NotFoundException;
 import com.lina.airline.repository.UserRepository;
 import com.lina.airline.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,7 +21,7 @@ import static com.lina.airline.utils.ErrorDetails.USER_ALREADY_EXISTS;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
+    private final PasswordEncoder passwordEncoder;
     @Override
     public UUID saveUser(UserRegistrationRequest userRegistrationRequest) {
 
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setEmail(userRegistrationRequest.getEmail());
         userEntity.setName(userRegistrationRequest.getName());
         userEntity.setPhoneNumber(userRegistrationRequest.getPhoneNumber());
-        userEntity.setPassword(userRegistrationRequest.getPassword());
+        userEntity.setPassword(passwordEncoder.encode((userRegistrationRequest.getPassword())));
 
         userRepository.save(userEntity);
         return userEntity.getId();
