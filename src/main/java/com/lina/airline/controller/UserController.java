@@ -24,9 +24,17 @@ public class UserController {
 
    public final UserService userService;
 
-    @PostMapping("/")
-    public UUID registrationUser(@RequestBody @Valid UserRegistrationRequest userRegistrationRequest){
-        return userService.saveUser(userRegistrationRequest);
+    @PostMapping("/register")
+    public ResponseEntity<APIResponse<CreationResponse>> registrationUser(@RequestBody @Valid UserRegistrationRequest userRegistrationRequest){
+       UUID id=userService.saveUser(userRegistrationRequest);
+        APIResponse<CreationResponse> responseDTO = APIResponse
+                .<CreationResponse>builder()
+                .dateTime(new Date().toString())
+                .status(HttpStatus.OK.getReasonPhrase())
+                .code(HttpStatus.OK)
+                .results(new CreationResponse(id))
+                .build();
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
   @PutMapping ("/updateUser/{id}")
     public ResponseEntity<APIResponse<CreationResponse>> updateUserProfile(@RequestBody @Valid UpdateUserRequest updateUserRegistrationRequest, @PathVariable UUID id){
