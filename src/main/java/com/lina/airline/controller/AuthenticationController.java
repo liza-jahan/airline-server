@@ -55,14 +55,3 @@ public class AuthenticationController {
 }
 
 
-//
-//
-//    HttpHeaders headers = new HttpHeaders();
-//        if (response.getJwt() != null) {
-//                headers.set(ApplicationConstants.JWT_HEADER, response.getJwt());
-//                }
-//
-//                return ResponseEntity.status(HttpStatus.OK)
-//                .headers(headers)
-//                .body(response);
-//                }

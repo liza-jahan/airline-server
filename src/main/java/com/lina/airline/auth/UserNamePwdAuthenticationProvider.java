@@ -18,16 +18,6 @@ public class UserNamePwdAuthenticationProvider implements AuthenticationProvider
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Optional<UserEntity> userEntity = userRepository.findByEmail(username);
-//
-//        if (userEntity.isEmpty()) {
-//            throw new UsernameNotFoundException("User not found with email: " + username);
-//        }
-//
-//        return new CustomUserDetails(userEntity.get());
-//    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
