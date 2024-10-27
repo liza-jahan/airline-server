@@ -22,18 +22,21 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+
     @Override
     public UUID saveUser(UserRegistrationRequest userRegistrationRequest) {
 
         if (isUserExists(userRegistrationRequest.getEmail())) {
             throw new IdentifierExistException(USER_ALREADY_EXISTS);
         }
+        String encodedPassword = passwordEncoder.encode(userRegistrationRequest.getPassword());
 
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail(userRegistrationRequest.getEmail());
         userEntity.setName(userRegistrationRequest.getName());
         userEntity.setPhoneNumber(userRegistrationRequest.getPhoneNumber());
-        userEntity.setPassword(passwordEncoder.encode((userRegistrationRequest.getPassword())));
+        userEntity.setPassword(encodedPassword);
 
         userRepository.save(userEntity);
         return userEntity.getId();
@@ -60,6 +63,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userEntity);
         return Optional.of(userEntity);
     }
+
 
 
     private boolean isUserExists(String email) {

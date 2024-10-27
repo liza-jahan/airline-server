@@ -1,4 +1,4 @@
-package com.lina.airline.jwtRequirement;
+package com.lina.airline.service.impl;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -17,10 +17,10 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-public class JWTService {
+public class JWTServiceImp {
     private String secretkey = "";
 
-    public JWTService() {
+    public JWTServiceImp() {
 
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");

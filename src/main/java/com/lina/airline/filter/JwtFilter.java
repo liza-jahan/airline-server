@@ -1,11 +1,12 @@
 package com.lina.airline.filter;
 
-import com.lina.airline.jwtRequirement.CustomUserDetailsService;
-import com.lina.airline.jwtRequirement.JWTService;
+import com.lina.airline.service.impl.JWTServiceImp;
+import com.lina.airline.service.impl.CustomUserDetailsServiceImp;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,14 +17,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+
 @RequiredArgsConstructor
 @Component
+@AllArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
-
-    private JWTService jwtService;
+    private CustomUserDetailsServiceImp userDetailsService;
+    private JWTServiceImp jwtService;
     ApplicationContext context;
 
-    public JwtFilter(JWTService jwtService) {
+    public JwtFilter(JWTServiceImp jwtService) {
         this.jwtService = jwtService;
     }
 
@@ -40,7 +43,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = context.getBean(CustomUserDetailsService.class).loadUserByUsername(username);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             if (jwtService.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource()
@@ -50,5 +53,6 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
+
     }
 }
