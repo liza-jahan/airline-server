@@ -13,13 +13,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
-
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
@@ -50,9 +48,10 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<PaginationDto<UserDTO>> getAllUsers(
             @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "") String keyWord) {
 
-        PaginationDto<UserDTO> response = userService.getAllUsers(page - 1, size);
+        PaginationDto<UserDTO> response = userService.getAllUsers(page - 1, size,keyWord);
         return ResponseEntity.ok(response);
     }
 }

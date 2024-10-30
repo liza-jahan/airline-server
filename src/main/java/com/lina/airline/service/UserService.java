@@ -15,5 +15,5 @@ public interface  UserService {
 
     UUID saveUser(UserRegistrationRequest userRegistrationRequest);
     Optional<UserEntity> updateUserProfile(UUID id, UpdateUserRequest userRegistrationRequest);
-    PaginationDto<UserDTO> getAllUsers(int page, int size);
+    PaginationDto<UserDTO> getAllUsers(int page, int size,String keyWord);
 }

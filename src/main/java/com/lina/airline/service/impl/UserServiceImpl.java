@@ -18,7 +18,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
 import java.util.stream.Collectors;
 
 import static com.lina.airline.utils.ErrorDetails.USER_ALREADY_EXISTS;
@@ -69,8 +68,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PaginationDto<UserDTO> getAllUsers(int page, int size) {
-        Page<UserEntity> userPage = userRepository.findAll(PageRequest.of(page, size));
+    public PaginationDto<UserDTO> getAllUsers(int page, int size, String keyWord) {
+        Page<UserEntity> userPage;
+        if (keyWord != null && !keyWord.isEmpty()) {
+            userPage = userRepository.findByNameContaining(keyWord, PageRequest.of(page, size));
+        } else {
+            userPage = userRepository.findAll(PageRequest.of(page, size));
+        }
 
         List<UserDTO> users = userPage.stream()
                 .map(user -> new UserDTO(
@@ -80,12 +84,12 @@ public class UserServiceImpl implements UserService {
                         user.getLastLogIn()
                 ))
                 .collect(Collectors.toList());
-        PaginationDto.PaginationInfo paginationInfo=new PaginationDto
+        PaginationDto.PaginationInfo paginationInfo = new PaginationDto
                 .PaginationInfo(page, size,
                 userPage.getTotalPages(),
                 userPage.getTotalElements()
         );
-        return new PaginationDto<>(users,paginationInfo);
+        return new PaginationDto<>(users, paginationInfo);
     }
 
 
@@ -94,14 +98,15 @@ public class UserServiceImpl implements UserService {
     }
 
     private String detectStatus(Date lastLogin) {
-            if (lastLogin == null) {
-                return "Inactive";
-            }
+        if (lastLogin == null) {
+            return "Inactive";
+        }
 
-            long diffInMillis = new Date().getTime() - lastLogin.getTime();
-            long daysDifference = diffInMillis / (1000 * 60 * 60 * 24);
+        long diffInMillis = new Date().getTime() - lastLogin.getTime();
+        long daysDifference = diffInMillis / (1000 * 60 * 60 * 24);
 
-        return daysDifference <=10 ? "Active" : "Inactive";        }
+        return daysDifference <= 10 ? "Active" : "Inactive";
+    }
 
 
 }
