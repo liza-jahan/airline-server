@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static com.lina.airline.utils.ErrorDetails.USER_ALREADY_EXISTS;
+import static com.lina.airline.utils.ErrorDetails.ALREADY_EXISTS;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     public UUID saveUser(UserRegistrationRequest userRegistrationRequest) {
 
         if (isUserExists(userRegistrationRequest.getEmail())) {
-            throw new IdentifierExistException(USER_ALREADY_EXISTS);
+            throw new IdentifierExistException(ALREADY_EXISTS);
         }
 
         UserEntity userEntity = new UserEntity();

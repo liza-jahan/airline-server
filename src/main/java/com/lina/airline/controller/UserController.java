@@ -45,7 +45,7 @@ public class UserController {
 
     }
     @GetMapping("/users")
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<PaginationDto<UserDTO>> getAllUsers(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,
