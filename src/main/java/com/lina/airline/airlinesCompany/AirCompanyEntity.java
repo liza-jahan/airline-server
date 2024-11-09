@@ -1,5 +1,6 @@
 package com.lina.airline.airlinesCompany;
 
+import com.lina.airline.aircraft.AircraftEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -33,6 +35,7 @@ public class AirCompanyEntity {
     private String country; // Default to US for US-based airlines
 
     private LocalDateTime registeredDate;
-
+    @OneToMany(mappedBy = "airline")
+    private List<AircraftEntity> aircraftEntities;
 
 }
