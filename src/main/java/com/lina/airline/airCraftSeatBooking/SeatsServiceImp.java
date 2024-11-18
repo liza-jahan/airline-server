@@ -2,6 +2,7 @@ package com.lina.airline.airCraftSeatBooking;
 
 import com.lina.airline.aircraft.AirCraftRepository;
 import com.lina.airline.aircraft.AircraftEntity;
+import com.lina.airline.exception.IllegalException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,11 @@ public class SeatsServiceImp implements SeatsService{
     @Override
     public void createSeatsForAircraft(UUID aircraftId, int row, int column) {
        AircraftEntity aircraftEntity=airCraftRepository.findById(aircraftId).orElseThrow(() -> new  RuntimeException("Not found by id"));
+
+
+        if(existByAircraftId(aircraftId)){
+            throw new IllegalException( "AirCraft id already exist seats","001_001_00001");
+        }
 
         List<SeatsEntity> seatsList=new ArrayList<>();
         for (char rowNumber = 'A'; rowNumber <= ('A'+row); rowNumber++) {
@@ -45,5 +51,7 @@ public class SeatsServiceImp implements SeatsService{
 
     }
 
-
+ public  boolean existByAircraftId(UUID aircraftId){
+        return airCraftRepository.existsByAircraftId(aircraftId);
+ }
 }
