@@ -8,6 +8,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -22,5 +23,6 @@ public abstract class BaseEntity implements Serializable {
     private UUID id;
     private Date createdTime;
     private Date lastUpdateTime;
+    private Date lastLogIn;
 
 }

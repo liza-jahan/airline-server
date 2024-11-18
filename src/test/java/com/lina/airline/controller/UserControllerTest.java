@@ -12,7 +12,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.UUID;
 
-import static com.lina.airline.utils.ErrorDetails.USER_ALREADY_EXISTS;
+import static com.lina.airline.utils.ErrorDetails.ALREADY_EXISTS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -57,13 +57,13 @@ class UserControllerTest {
     void testSaveUser_UserAlreadyExists() {
         // Arrange
         when(userService.saveUser(any(UserRegistrationRequest.class)))
-                .thenThrow(new IdentifierExistException(USER_ALREADY_EXISTS));
+                .thenThrow(new IdentifierExistException(ALREADY_EXISTS));
 
         // Act & Assert
         IdentifierExistException exception = assertThrows(IdentifierExistException.class, () -> {
             userController.registrationUser(userRegistrationRequest);
         });
 
-        assertEquals(USER_ALREADY_EXISTS.getMessage(), exception.getMessage(), "Exception message should match.");
+        assertEquals(ALREADY_EXISTS.getMessage(), exception.getMessage(), "Exception message should match.");
     }
 }
