@@ -22,8 +22,8 @@ public class AirCompanyServiceImp implements AirCompanyService{
         }
         AirCompanyEntity airCompanyEntity=new AirCompanyEntity();
         airCompanyEntity.setName(airCompanyRequest.getName());
-        airCompanyEntity.setCountry(airCompanyEntity.getCountry());
-        airCompanyEntity.setRegistrationCode(airCompanyEntity.getRegistrationCode());
+        airCompanyEntity.setCountry(airCompanyRequest.getCountry());
+        airCompanyEntity.setRegistrationCode(airCompanyRequest.getRegistrationCode());
         airCompanyEntity.setRegisteredDate(LocalDateTime.now());
         airCompanyRepository.save(airCompanyEntity);
 

@@ -24,17 +24,15 @@ public class AirCompanyEntity {
     @Column(columnDefinition = "VARCHAR(36)")
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID id;
-
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String registrationCode;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
     private String country; // Default to US for US-based airlines
 
     private LocalDateTime registeredDate;
+
     @OneToMany(mappedBy = "airline")
     private List<AircraftEntity> aircraftEntities;
 

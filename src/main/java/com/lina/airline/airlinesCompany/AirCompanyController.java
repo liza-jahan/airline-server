@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-public class AirCompanyServiceController {
+public class AirCompanyController {
     private final AirCompanyService airCompanyService;
 
     @PostMapping("/add-company")
