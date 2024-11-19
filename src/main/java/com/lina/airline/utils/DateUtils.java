@@ -2,7 +2,6 @@ package com.lina.airline.utils;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public final class DateUtils {
 
@@ -74,9 +73,9 @@ public final class DateUtils {
      * @param endDate End date.
      * @return Number of days between the two dates.
      */
-    public static long getDaysBetween(LocalDate startDate, LocalDate endDate) {
-        return ChronoUnit.DAYS.between(startDate, endDate);
-    }
+//    public static long getDaysBetween(LocalDate startDate, LocalDate endDate) {
+//        return ChronoUnit.DAYS.between(startDate, endDate);
+//    }
 
     /**
      * Add days to a given date.
