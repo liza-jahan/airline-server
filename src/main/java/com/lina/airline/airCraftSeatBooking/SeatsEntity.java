@@ -1,6 +1,7 @@
 package com.lina.airline.airCraftSeatBooking;
 
 import com.lina.airline.aircraft.AircraftEntity;
+import com.lina.airline.airflight.FlightEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +27,7 @@ public class SeatsEntity {
     private String seatClass; // Economy, Business
 
     @Column(name = "is_available")
-    private boolean isAvailable = true;
+    private boolean isAvailable ;
 
     @Column(name = "seat_row_number")
     private char rowNumber;
@@ -37,4 +38,8 @@ public class SeatsEntity {
     @ManyToOne
     @JoinColumn(name = "aircraftId", nullable = false)
     private AircraftEntity aircraftEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private FlightEntity flightEntity;
 }

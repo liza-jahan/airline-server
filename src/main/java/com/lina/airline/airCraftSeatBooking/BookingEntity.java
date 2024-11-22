@@ -1,11 +1,13 @@
 package com.lina.airline.airCraftSeatBooking;
 
+import com.lina.airline.airflight.FlightEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -14,18 +16,20 @@ import java.time.LocalDate;
 public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
 
-    @Column(nullable = false)
     private String passengerName;
+    private String passengerEmail;
+    private LocalDateTime bookingDate;
 
-    @Column(nullable = false)
-    private LocalDate flightDate;
-
-    private  boolean isConfirmed = false; // Status of the booking
+    private  boolean isConfirmed ;// Status of the booking
 
     @ManyToOne
     @JoinColumn(name = "seatId", nullable = false)
     private SeatsEntity seat;
+
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private FlightEntity flightEntity;
 }

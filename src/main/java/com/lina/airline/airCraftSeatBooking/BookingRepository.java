@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface BookingRepository extends JpaRepository<BookingEntity,Long> {
-    //List<BookingEntity> findBySeatIdAndFlightDate(Long seatId, LocalDate flightDate);
+
+    List<BookingEntity> findByPassengerEmail(String email);
 
 }
