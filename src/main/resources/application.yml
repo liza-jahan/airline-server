@@ -15,7 +15,25 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
+#        mail:
+#          host: smtp.gmail.com
+#          port: 587
+#          username: stackflowover3@gmail.com
+#          password: fodh vqes baje dkst
+#          protocol: smtp
+#          properties:
+#                mail:
+#                  smtp:
+#                    auth: true
+#                    starttls:
+#                      enable: true
+#                logging:
+#                  level:
+#                    org.springframework.mail: DEBUG
+
+
 server:
   servlet:
     context-path: /api/v1/
+
 
