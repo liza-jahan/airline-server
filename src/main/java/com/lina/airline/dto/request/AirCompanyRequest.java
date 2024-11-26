@@ -15,7 +15,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AirCompanyRequest {
 
-    private UUID id;
     @NotBlank(message = "Registration Code is required")
     private String registrationCode;
    @NotBlank(message = "Name is required")

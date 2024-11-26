@@ -2,6 +2,7 @@ package com.lina.airline.airCraftSeatBooking;
 
 import com.lina.airline.aircraft.AirCraftRepository;
 import com.lina.airline.aircraft.AircraftEntity;
+
 import com.lina.airline.exception.IllegalException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static com.lina.airline.enums.SeatType.BUSINESS;
+import static com.lina.airline.enums.SeatType.ECONOMY;
 
 @Service
 @Slf4j
@@ -33,7 +37,7 @@ public class SeatsServiceImp implements SeatsService{
                     continue;
                 }
                 SeatsEntity seatsEntity=new SeatsEntity();
-                seatsEntity.setSeatClass(rowNumber==3 || rowNumber>=5 ?"Business":"Economy" );
+                seatsEntity.setSeatClass(rowNumber==3 || rowNumber>=5 ?ECONOMY:BUSINESS);
                 seatsEntity.setSeatNumber(rowNumber + String.valueOf(columnNumber));
                 seatsEntity.setRowNumber(rowNumber);
                 seatsEntity.setColumnNumber(columnNumber);

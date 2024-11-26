@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AirCraftRequest {
-    private Long id;
     @NotBlank(message = "Registration number is required")
     private String registrationNumber;
     @NotBlank(message = "Model is required")

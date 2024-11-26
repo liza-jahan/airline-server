@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface BookingRepository extends JpaRepository<BookingEntity,Long> {
+public interface BookingRepository extends JpaRepository<BookingEntity,Integer> {
 
     List<BookingEntity> findByPassengerEmail(String email);
 

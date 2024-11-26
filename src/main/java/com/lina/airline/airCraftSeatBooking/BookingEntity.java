@@ -6,13 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name="seatbooking")
 public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +24,10 @@ public class BookingEntity {
     private String passengerEmail;
     private LocalDateTime bookingDate;
 
-    private  boolean isConfirmed ;// Status of the booking
+    private  boolean isConfirmed=true ;// Status of the booking
 
     @ManyToOne
-    @JoinColumn(name = "seatId", nullable = false)
+    @JoinColumn(name = "seatId")
     private SeatsEntity seat;
 
     @ManyToOne

@@ -2,6 +2,7 @@ package com.lina.airline.airCraftSeatBooking;
 
 import com.lina.airline.aircraft.AircraftEntity;
 import com.lina.airline.airflight.FlightEntity;
+import com.lina.airline.enums.SeatType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
@@ -24,16 +26,20 @@ public class SeatsEntity {
     private String seatNumber;
 
     @Column(name = "seat_class")
-    private String seatClass; // Economy, Business
+    @Enumerated(EnumType.STRING)
+    private SeatType seatClass;
 
     @Column(name = "is_available")
-    private boolean isAvailable ;
+    private boolean isAvailable;
 
     @Column(name = "seat_row_number")
     private char rowNumber;
 
     @Column(name = "seat_column_number")
     private int columnNumber;
+
+    @Column(name = "price")
+    private BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name = "aircraftId", nullable = false)

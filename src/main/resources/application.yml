@@ -15,6 +15,13 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
+        logging:
+          level:
+            org:
+              springframework: DEBUG
+
+
+
 #        mail:
 #          host: smtp.gmail.com
 #          port: 587

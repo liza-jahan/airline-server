@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingRequest {
-
-    private String passengerName;
-    private String passengerEmail;
-    private  boolean isConfirmed ;
-
+public class FlightRequest {
+    private String flightNumber;
+    private String origin;
+    private String destination;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
 }

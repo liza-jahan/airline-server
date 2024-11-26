@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SeatsRequest {
-    private Long id;
 
     @NotBlank(message = "seat number is required")
     private String seatNumber;
@@ -18,7 +17,7 @@ public class SeatsRequest {
     @NotBlank(message = "seat class is required")
     private String seatClass; // Economy, Business
 
-    private boolean isAvailable = true;
+    private boolean isAvailable;
 
     private int rowNumber;
 

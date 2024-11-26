@@ -1,6 +1,7 @@
 package com.lina.airline.aircraft;
 
 import com.lina.airline.airCraftSeatBooking.SeatsEntity;
+import com.lina.airline.airflight.FlightEntity;
 import com.lina.airline.airlinesCompany.AirCompanyEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,4 +37,8 @@ public class AircraftEntity {
 
     @OneToMany
     private List<SeatsEntity>seatEntities;
+
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private FlightEntity flightEntity;
 }

@@ -15,7 +15,7 @@ public class EmailServiceImp {
     public String sendMail(String email, String subject, String body) {
         try {
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-            simpleMailMessage.setFrom("");
+            simpleMailMessage.setFrom("stackflowover3@gmail.com");
             simpleMailMessage.setTo(email);
             simpleMailMessage.setText(body);
             simpleMailMessage.setSubject(subject);
