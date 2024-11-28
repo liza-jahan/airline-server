@@ -1,5 +1,6 @@
 package com.lina.airline.airCraftSeatBooking;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lina.airline.aircraft.AircraftEntity;
 import com.lina.airline.airflight.FlightEntity;
 import com.lina.airline.enums.SeatType;
@@ -7,26 +8,27 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "seatdetails")
+
+@Table(name = "seatdetails", uniqueConstraints = @UniqueConstraint(columnNames = {"seatNumber", "aircraftId"})
+)
+
 public class SeatsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "seat_number" ,unique = true)
+    @Column(name = "seat_number")
     private String seatNumber;
 
     @Column(name = "seat_class")
     @Enumerated(EnumType.STRING)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private SeatType seatClass;
 
     @Column(name = "is_available")

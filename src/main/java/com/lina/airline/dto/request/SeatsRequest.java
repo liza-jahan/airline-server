@@ -1,25 +1,23 @@
 package com.lina.airline.dto.request;
 
+import com.lina.airline.enums.SeatType;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class SeatsRequest {
 
-    @NotBlank(message = "seat number is required")
-    private String seatNumber;
 
-    @NotBlank(message = "seat class is required")
-    private String seatClass; // Economy, Business
 
-    private boolean isAvailable;
+    @NotNull(message = "seat class is required")
+    private SeatType seatClass;; // Economy, Business
 
-    private int rowNumber;
-
-    private char columnNumber;
 }

@@ -26,7 +26,7 @@ public class AircraftEntity {
     @Column(columnDefinition = "VARCHAR(36)")
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID aircraftId;
-
+    @Column(unique = true)
     private String registrationNumber;
     private String model;
     private int capacity;

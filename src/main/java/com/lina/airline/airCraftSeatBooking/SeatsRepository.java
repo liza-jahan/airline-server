@@ -13,6 +13,8 @@ import java.util.UUID;
 public interface SeatsRepository extends JpaRepository<SeatsEntity,Integer> {
    @Query(value = "SELECT * FROM seatdetails WHERE id = :id AND is_available = :isAvailable", nativeQuery = true)
    Optional<SeatsEntity> findByIdAndIsAvailable(@Param("id") int id, @Param("isAvailable") boolean isAvailable);
+   boolean existsByAircraftEntityRegistrationNumber(String registrationNumber);
+  // boolean findBySeatNumberAndAircraftId(String seatNumber, UUID aircraftId);
 
 
 
